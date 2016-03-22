@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """ Route Engine
 This project is intended to provide server management engine written in Python
 
@@ -12,6 +11,19 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 """
 
 from application import *
+import argparse
 
 if __name__ == "__main__":
+		parser = argparse.ArgumentParser(description='Process some integers.')
+		parser.add_argument('integers', metavar='N', type=int, nargs='+',
+		                   help='an integer for the accumulator')
+		parser.add_argument('--sum', dest='accumulate', action='store_const',
+		                   const=sum, default=max,
+		                   help='sum the integers (default: find the max)')
+
+		args = parser.parse_args()
+		print args.accumulate(args.integers)
+
 		app = Application()
+		app.mainloop()
+

@@ -10,25 +10,56 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
-class Application:
+from Queue import PriorityQueue
+from scheduler import *
+from enum import *
+
+
+SERVER_STATUSES = enum(INIT=1, RUNNING=2, QUIT=3)
+TRUE = 1
+
+class Application(object):
+	""" Main class of the application """
+
 	def __init__(self):
+		super(Application, self).__init__()
+
 		self.__private_value = 0
-		self.start_time = 0
-		self.running_time = 0
-		self.configuration = list() # Configuration options container
-		self.scheduler = Scheduler() # Job scheduler
-		self.workers = list() # List of workers
+		self.start_time = 0					# Start time of the server
+		self.running_time = 0				# Uptime of the server
+
+		self.configuration = list() 		# Configuration options container
+		self.scheduler = Scheduler() 		# Job scheduler
+		self.scheduled_count = 0			# Scheduled task 
+
+		self.workers = list() 				# List of workers
+		self.worker_count = 10 				# by default 10 workers are avaible
+
+		self.tasks = PriorityQueue() 		# Queue of tasks do be executed
+		self.tasks_in_progress = PriorityQueue()	# Tasks currently in progress
+		self.tasks_history = list()			# List of already finished tasks
+
+		self.nodes = list()					# Nodes list of peers
+		self.tags = list()					# Tags that are describing the server
+		self.current_status = 1				# Current status of the server
 
 	def recv_cmd(self):
+		""" Recive commands from stdin or other sources """
 		cmd = ""
+		cmd = raw_input("--->  ")
 		return cmd
 
 	def mainloop(self):
-		q = 1
-		cmd = ""
+		q = TRUE
+		self.current_status = SERVER_STATUSES.INIT
+		
 		while q:
-			cmd = recv_cmd()
+			cmd = ""
+			cmd = self.recv_cmd()
+			print cmd
 
-			if cmd == "quit":
+			if (cmd == "quit" or cmd == "exit"):
 				q = 0
-			 	pass 
+				print "Quiting..."
+			 	pass
+		print "Exiting main loop..."

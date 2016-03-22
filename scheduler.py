@@ -10,12 +10,13 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
-from change import *
+from Queue import Queue
+from task import *
 
 class Scheduler:
 	def __init__(self):
 		self.__private = 0
-		self.
+		self.scheduled_tasks = Queue() # list of scheduled tasks
 
 	def schedule_change(self, change_struct):
 		""" Adds new record to priority queue list """

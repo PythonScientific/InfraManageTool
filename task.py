@@ -1,5 +1,5 @@
 """ Task class
-Task class is the main 
+Task class is the main
 
 Author: Patryk Zabkiewicz
 Date:	2016.03.21
@@ -17,4 +17,4 @@ class Task(object):
 		self.arg = arg
 
 	def do(self):
-
+		pass

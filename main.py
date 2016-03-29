@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
 		help()
 
-		print "Engine is starting...\n"
+		print "Engine is starting..."
 
 		app = Application()
 		app.mainloop()

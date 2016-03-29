@@ -18,11 +18,13 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 config_file_path = ""
 
 def help():
-	print "Timetable ver.0.01 Alpha"
 	print ""
 
+def version():
+	print "Timetable ver.0.01 Alpha"
+
 if __name__ == "__main__":
-		parser = argparse.ArgumentParser(description='')
+		parser = argparse.ArgumentParser(description=version())
 		#parser.add_argument('integers', metavar='N', type=int, nargs='+',
 		#                   help='an integer for the accumulator')
 		parser.add_argument('--config_file', action='store_const',
@@ -31,7 +33,7 @@ if __name__ == "__main__":
 
 		args = parser.parse_args()
 
-		help()
+		version()
 
 		print "Engine is starting..."
 

@@ -28,9 +28,6 @@ class Application(object):
 		super(Application, self).__init__()
 		self.__private_value = 0
 
-		self.log_store = "~/.timetable"		# Standard log path
-		self.log_buffer_size = 10			# Default log buffer size to disk store
-		self.log_buffer = list()			# Log buffer
 		self.Logger = Logger()				# Logger form
 
 		self.alerts = list()				# Customizable alerts for events
@@ -70,6 +67,9 @@ class Application(object):
 
 	def initate(self):
 		""" This initializes the application specific items """
+
+		# logger start
+		self.logger.log("")
 
 		# init configuration
 

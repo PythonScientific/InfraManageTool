@@ -1,5 +1,5 @@
-""" Chain class
-This project is intended to provide server management engine written in Python
+""" Logger class
+Logger controls the application logging capabilites
 
 Author: Patryk Zabkiewicz
 Date:	2016.03.21
@@ -10,8 +10,28 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
+from enum import *
+
+LOG_LEVEL = enum(INFO=1, WARRNING=2, ERROR=3)
+
+class LogLine(object):
+    """ One line of logs """
+    def __init__(self, arg):
+        super(LogLine, self).__init__()
+        self.level = LOG_LEVEL
+        self.messange = ""
+
 class Logger(object):
-    """docstring for Logger"""
+    """ Logger controls the application logging capabilites """
     def __init__(self, arg):
         super(Logger, self).__init__()
-        self.arg = arg
+		self.log_store = "~/.timetable"		# Standard log path
+		self.log_buffer_size = 10			# Default log buffer size to disk store
+		self.log_buffer = list()			# Log buffer
+        self._logfile = ""                  # Path to logfile
+        self._logfilename = ""              # Log file name
+        pass
+
+    def log(self):
+
+        pass

@@ -37,6 +37,7 @@ if __name__ == "__main__":
 		print "Engine is starting..."
 
 		app = Application()
+		app.initate()
 		app.mainloop()
 
 		print "Engine has stopped"

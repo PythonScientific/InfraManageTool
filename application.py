@@ -15,6 +15,8 @@ from scheduler import *
 from enum import *
 from system_info import *
 from chain import *
+from main import version,help
+from logger import *
 
 SERVER_STATUSES = enum(INIT=1, RUNNING=2, QUIT=3)
 TRUE = 1
@@ -29,6 +31,7 @@ class Application(object):
 		self.log_store = "~/.timetable"		# Standard log path
 		self.log_buffer_size = 10			# Default log buffer size to disk store
 		self.log_buffer = list()			# Log buffer
+		self.Logger = Logger()				# Logger form
 
 		self.alerts = list()				# Customizable alerts for events
 		self.alerts_count = 0				# Count of created alerts
@@ -65,7 +68,19 @@ class Application(object):
 		cmd = raw_input("--->  ")
 		return cmd
 
+	def initate(self):
+		""" This initializes the application specific items """
+
+		# init configuration
+
+		# init
+
+		# init alerts
+
+		pass
+
 	def mainloop(self):
+		""" Recive a command from stdin CLI and send it out to application engine """
 		q = TRUE
 		self.current_status = SERVER_STATUSES.INIT
 

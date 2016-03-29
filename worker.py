@@ -10,9 +10,13 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
-class Worker:
+from Queue import Queue
+
+class Worker(object):
 	""" Worker is the process that controls execution of tasks """
-	def __init__(self):
+	def __init__(self,task_list):
+		self.task_list = task_list
+		self.task_queue = Queue() # Queue of task to execute
 		pass
 
 	def setup_work(self, work_struct):

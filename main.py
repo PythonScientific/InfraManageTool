@@ -18,6 +18,7 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 config_file_path = ""
 
 def help():
+	print "Timetable ver.0.01 Alpha"
 	print ""
 
 if __name__ == "__main__":
@@ -29,6 +30,8 @@ if __name__ == "__main__":
 		                   help='config file path (default: .timetable/default.config')
 
 		args = parser.parse_args()
+
+		help()
 
 		print "Engine is starting...\n"
 

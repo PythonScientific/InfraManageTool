@@ -15,4 +15,6 @@ class Task(object):
 	def __init__(self, arg):
 		super(Task, self).__init__()
 		self.arg = arg
-		
+
+	def do(self):
+

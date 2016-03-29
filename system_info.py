@@ -12,9 +12,8 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 class SystemInfo(object):
     """ Stores the current system status """
-    def __init__(self, arg):
+    def __init__(self):
         super(SystemInfo, self).__init__()
-        self.arg = arg
         self.infomation = list()
 
     def apply_change(self,change):

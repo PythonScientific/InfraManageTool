@@ -18,7 +18,8 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 config_file_path = ""
 
 def help():
-	print ""
+	print "The program stores current server status and by exchanging information"
+	print " with it's peers it execute changes to this machine"
 
 def version():
 	print "Timetable ver.0.01 Alpha"
@@ -32,8 +33,6 @@ if __name__ == "__main__":
 		                   help='config file path (default: .timetable/default.config')
 
 		args = parser.parse_args()
-
-		version()
 
 		print "Engine is starting..."
 

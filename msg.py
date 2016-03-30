@@ -20,6 +20,18 @@ class MSG:
         self.sumbit = 0             # CRC sum bit
         self.bitout = []            # encoded bits to send out throu network
 
+    def calculateCRC(self):
+        """ Calculates CRC sum and fills out sum bit """
+        pass
+
+    def encode(self):
+        """ Encode the bit out of the messange """
+        pass
+
+    def decode(self):
+        """ Decode the bit out of the messange """
+        pass
+
     @staticmethod
     def getID():
         MSG.id += 1

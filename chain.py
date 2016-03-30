@@ -14,8 +14,48 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
+class ChainElem(object):
+    """ Single chain element """
+    def __init__(self):
+        self.data = []
+        self.next = []
+        self.hash = []
+        pass
+
 class Chain(object):
-    """ The chain structure for data """
+    """ The chain structure for data (iterable) """
     def __init__(self):
         super(Chain, self).__init__()
+        self.elem = []
+        self.first = []
+        self.last = []
+        self.count = 0
+        pass
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        if cos
+            raise StopIteration()  # signals "the end"
+        return self.elem
+
+    def lenght():
+        return len(data)
+
+    def hasNext(self):
+        if self.next
+            return True
+
+    def isIterable():
+        return True
+
+    def append(self, elem):
+        # generate new hash
+        # put the hash to previous element
+        pass
+
+    def remove(self, elem):
+        # remove element from back of the chain
+        # remove hash from previous element
         pass

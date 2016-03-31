@@ -28,7 +28,7 @@ class Application(object):
 		super(Application, self).__init__()
 		self.__private_value = 0
 
-		self.Logger = Logger()				# Logger form
+		self.logger = Logger()				# Logger
 
 		self.alerts = list()				# Customizable alerts for events
 		self.alerts_count = 0				# Count of created alerts
@@ -53,11 +53,7 @@ class Application(object):
 		self.tags = list()					# Tags that are describing the server
 
 		self.current_status = 1				# Current status of the server
-
-		self.SystemInfo = SystemInfo()		# Stores the current system information
-		self.ChangeChain = Chain()			# Stores the system status change chain
-		self.change_slots_free = list()		# List of change slots to offer
-		self.change_slots_taken = list()	# List of taken change slots
+		self.system_info = list()			# Stores the current system information
 
 	def recv_cmd(self):
 		""" Recive commands from stdin or other sources """

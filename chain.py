@@ -16,9 +16,10 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 class ChainElem(object):
     """ Single chain element """
-    def __init__(self):
-        self.data = []
+    def __init__(self, data):
+        self.data = data
         self.next = []
+        self.prev = []
         self.hash = []
         pass
 
@@ -32,23 +33,12 @@ class Chain(object):
         self.count = 0
         pass
 
-    def __iter__(self):
-        return self
-
-    def next(self):
-        if cos
-            raise StopIteration()  # signals "the end"
-        return self.elem
-
     def lenght():
         return len(data)
 
     def hasNext(self):
         if self.next
             return True
-
-    def isIterable():
-        return True
 
     def append(self, elem):
         # generate new hash

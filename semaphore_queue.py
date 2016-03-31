@@ -1,5 +1,5 @@
 """ SemaphoreQueue Class
-
+Data structure that deletes the element after several number of reads
 This structure is used here for controlling sending out
 same messanges to all of the peers
 
@@ -37,7 +37,7 @@ class SemaphoreQueue(object):
             self.count -= 1
         if self.first.next is not None
             self.first = self.first.next
-        return tmp
+        return tmp.data
 
     def hasNext(self):
         if self.first.next is not None
@@ -47,3 +47,6 @@ class SemaphoreQueue(object):
         if self.max_size > 0 and self.count < self.max_size
             self.last.next = SemaphoreQueueElem(data, read_count)
             self.count += 1
+
+    def lenght(self):
+        return self.count

@@ -1,2 +1,20 @@
-# timetable
-Infrastructure as a code managment tool for change scheduling
+# Infra Manage Tool - IMT
+Infrastructure as a code management tool for server farms and data centers
+
+License info:
+This software comes with NO WARRANTY. You use it at your own risk.
+Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
+
+
+How to use it?
+==============
+
+Simply run:
+```
+pypy main.py
+```
+
+Authors
+=======
+
+Patryk Zabkiewicz pzabkiewicz@gmail.com

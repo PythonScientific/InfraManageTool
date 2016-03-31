@@ -1,6 +1,11 @@
 """ NetIO
 Reponsible for communication with other peers
 
+Main idea is about:
+    - sendout asynchronus messanges to another peers
+    - process one messange from queue to all peers
+    -
+
 Author: Patryk Zabkiewicz
 Date:	2016.03.30
 
@@ -12,14 +17,15 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 from queue import Queue
 from msg import MSG
+from semaphore_queue import *
 
 class NetIO(object):
     """ NetIO is reponsible for communication with other peers """
     def __init__(self, arg):
         super(NetIO, self).__init__()
-        self.in_buffer = Queue()        # buffer for input
-        self.out_buffer = Queue()       # buffer for output
-        self.peers = list()             # List of peers
+        self.in_buffer = SemaphoreQueue()       # buffer for input
+        self.out_buffer = SemaphoreQueue()      # buffer for output
+        self.peers = list()                     # List of peers
 
     def send(self):
         """ single messange send to all peers """
@@ -28,7 +34,7 @@ class NetIO(object):
             p.out_buffer.put(msg)
 
     def recv(self):
-        """ single messange recv from peers """
+        """ single messange recv from other peers """
         for p in self.peers: # go throu all peers
             self.in_buffer.put(p.recv())
 

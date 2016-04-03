@@ -37,7 +37,7 @@ class Chain(object):
         return len(data)
 
     def hasNext(self):
-        if self.next
+        if self.next:
             return True
 
     def append(self, elem):

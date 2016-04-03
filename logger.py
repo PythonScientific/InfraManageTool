@@ -23,15 +23,16 @@ class LogLine(object):
 
 class Logger(object):
     """ Logger controls the application logging capabilites """
-    def __init__(self, arg):
+    def __init__(self):
         super(Logger, self).__init__()
-		self.log_store = "~/.timetable"		# Standard log path
-		self.log_buffer_size = 10			# Default log buffer size to disk store
-		self.log_buffer = list()			# Log buffer
-        self._logfile = ""                  # Path to logfile
-        self._logfilename = ""              # Log file name
-        pass
+	self.log_store = "~/.timetable"		# Standard log path
+	self.log_buffer_size = 10		# Default log buffer size to disk store
+	self.log_buffer_count = 0		# Count of the messanges in the buffer
+	self.log_buffer = list()		# Log buffer
+        self._logfile = ""                  	# Path to logfile
+        self._logfilename = ""              	# Log file name
 
-    def log(self):
+    def log(self, messange):
+	self.log_buffer.append(messange)
+	self.log_buffer_count += 1
 
-        pass

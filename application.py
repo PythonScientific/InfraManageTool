@@ -13,7 +13,6 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 from Queue import PriorityQueue
 from scheduler import *
 from enum import *
-from system_info import *
 from chain import *
 from main import version,help
 from logger import *

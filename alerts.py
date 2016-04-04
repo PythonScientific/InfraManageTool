@@ -32,16 +32,19 @@ class Alert(object):
     """ Alerts signals the non acceptable state of the system """
     def __init__(self):
         super(Alert, self).__init__()
-        self.active = 0			# Is the alarm active now?
-        self.ttl = 0			# Time to alarm goes of since last ping to it
-        self.time_schedule = list()	# List of scheduled times for alarm to goes off
-        self.event = list()		# List of events when alarm goes off
+        self.active = 0			        # Is the alarm active now?
+        self.ttl = 0			        # Time to alarm goes of since last ping to it
+        self.time_schedule = list()	    # List of scheduled times for alarm to goes off
+        self.log_entries = 0            # Amount of log entries after
+        self.log_entries_severity = 0   # How severe the log entries are
+        self.task_queue_lenght = 0      # After queue get to certain level
+        self.event = list()		        # List of events when alarm goes off
 
     def activate(self):
-	self.active = 1
+	    self.active = 1
 
     def deactivate(self):
-	self.active = 0
+	    self.active = 0
 
 if __name__ == "__main__":
     pass

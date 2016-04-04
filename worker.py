@@ -39,3 +39,6 @@ class Worker(object):
 	def do_work(self):
 		""" This is the main task executor """
 		pass
+
+if __name__ == "__main__":
+    pass

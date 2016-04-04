@@ -10,6 +10,9 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
+def init():
+    pass
+
 class Alert(object):
     """ Alerts signals the non acceptable state of the system """
     def __init__(self, arg):
@@ -25,3 +28,5 @@ class Alert(object):
     def deactivate(self):
 	self.active = 0
 
+if __name__ == "__main__":
+    pass

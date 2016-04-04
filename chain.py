@@ -49,3 +49,6 @@ class Chain(object):
         # remove element from back of the chain
         # remove hash from previous element
         pass
+
+if __name__ == "__main__":
+    pass

@@ -36,3 +36,5 @@ class Logger(object):
 	self.log_buffer.append(messange)
 	self.log_buffer_count += 1
 
+if __name__ == "__main__":
+    pass

@@ -16,6 +16,8 @@ from enum import *
 from chain import *
 from main import version,help
 from logger import *
+from manual import *
+import alerts
 
 SERVER_STATUSES = enum(INIT=1, RUNNING=2, QUIT=3)
 TRUE = 1
@@ -67,10 +69,13 @@ class Application(object):
 		self.logger.log("")
 
 		# init configuration
+		self.configuration.append("")
 
 		# init
 
 		# init alerts
+		# read from saved state and add to list
+		alerts.init()
 
 		pass
 
@@ -82,15 +87,26 @@ class Application(object):
 		while q:
 			cmd = ""
 			cmd = self.recv_cmd()
-			print cmd
-
 			if (cmd == "quit" or cmd == "exit"):
 				q = 0
 				print "Quiting..."
-			 	pass
 			if cmd == "help":
 				version()
 				help()
-				pass
+			if cmd == "list":
+				list_help()
+			if cmd == "get":
+				get_help()
+			if cmd == "get peers":
+				print "getting peers..."
+			if cmd == "list peers":
+				print "listing peers..."
+			if cmd == "commit":
+				print "commiting changes..."
+			if len(cmd) > 0:
+				print "unknown command"
 
 		print "Exiting main loop..."
+
+if __name__ == "__main__":
+    pass

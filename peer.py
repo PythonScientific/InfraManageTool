@@ -16,3 +16,6 @@ class Peer(object):
         # send out messange
         # close connection
         pass
+
+if __name__ == "__main__":
+    pass

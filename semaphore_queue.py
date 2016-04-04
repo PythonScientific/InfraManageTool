@@ -50,3 +50,6 @@ class SemaphoreQueue(object):
 
     def lenght(self):
         return self.count
+
+if __name__ == "__main__":
+    pass

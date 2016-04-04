@@ -21,3 +21,6 @@ class Scheduler:
 	def schedule_change(self, change_struct):
 		""" Adds new record to priority queue list """
 		pass
+
+if __name__ == "__main__":
+    pass

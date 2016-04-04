@@ -45,3 +45,6 @@ class NetIO(object):
     def buffer_send(self, msg):
         """ write next messange to send buffer """
         self.out_buffer.put(msg)
+
+if __name__ == "__main__":
+    pass

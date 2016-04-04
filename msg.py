@@ -36,3 +36,6 @@ class MSG:
     def getID():
         MSG.id += 1
         return MSG.id
+
+if __name__ == "__main__":
+    pass

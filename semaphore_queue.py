@@ -16,19 +16,19 @@ class SemaphoreQueueElem(object):
     """ Basic element of semaphore queue """
     def __init__(self, data, read_limit=1):
         super(SemaphoreQueueElem, self).__init__()
-        self.data = data
-        self.read_count = 0
-        self.read_limit = read_limit
-        self.next = None
+        self.data = data                    # the data the element contains
+        self.read_count = 0                 # how many reads this element already has
+        self.read_limit = read_limit        # limit the amount of reads before removal from queue
+        self.next = None                    # next element on the queue
 
 class SemaphoreQueue(object):
     """ Data structure that deletes the element after several number of reads """
     def __init__(self, max_size=0):
         super(SemaphoreQueue, self).__init__()
-        self.first = []
-        self.last = []
-        self.count = 0
-        self.max_size = max_size
+        self.first = []                     # first element in queue
+        self.last = []                      # last element in queue
+        self.count = 0                      # how many element is there in the queue
+        self.max_size = max_size            # what is the max size of the queue
 
     def pop(self):
         self.first.read_count += 1

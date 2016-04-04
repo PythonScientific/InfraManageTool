@@ -33,18 +33,18 @@ class SemaphoreQueue(object):
     def pop(self):
         self.first.read_count += 1
         tmp = self.first
-        if self.first.read_count == self.read_limit
+        if self.first.read_count == self.read_limit:
             self.count -= 1
-        if self.first.next is not None
+        if self.first.next is not None:
             self.first = self.first.next
         return tmp.data
 
     def hasNext(self):
-        if self.first.next is not None
+        if self.first.next is not None:
             return True
 
     def push(self, data, read_count=1):
-        if self.max_size > 0 and self.count < self.max_size
+        if self.max_size > 0 and self.count < self.max_size:
             self.last.next = SemaphoreQueueElem(data, read_count)
             self.count += 1
 

@@ -13,6 +13,9 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 from Queue import Queue
 from task import *
 
+def init():
+	pass
+
 class Scheduler:
 	def __init__(self):
 		self.__private = 0

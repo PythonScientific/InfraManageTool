@@ -17,12 +17,14 @@ from application import *
 current_dir = os.path.dirname(os.path.realpath(__file__))
 config_file_path = ""
 
+VERSION = "ver.0.01"
+
 def help():
 	print "The program stores current server status and by exchanging information"
 	print " with it's peers it execute changes to this machine"
 
 def version():
-	print "Timetable ver.0.01 Alpha"
+	print "Timetable "+VERSION+" Alpha"
 
 if __name__ == "__main__":
 		parser = argparse.ArgumentParser(description=version())
@@ -30,14 +32,14 @@ if __name__ == "__main__":
 		#                   help='an integer for the accumulator')
 		parser.add_argument('--config_file', action='store_const',
 		                   const=config_file_path, default=os.path.join(current_dir,".timetable","default.config"),
-		                   help='config file path (default: .timetable/default.config')
+		                   help='config file path (default: .imt/default.config)')
 
 		args = parser.parse_args()
 
 		print "Engine is starting..."
 
 		app = Application()
-		app.initate()
+		app.init()
 		app.mainloop()
 
 		print "Engine has stopped"

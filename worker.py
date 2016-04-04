@@ -10,10 +10,13 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
-from Thread import Thread
+import threading, time
 from Queue import Queue
 
 TTL = 5
+
+def init():
+	pass
 
 class Worker(object):
 	""" Worker is the process that controls execution of tasks """

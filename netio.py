@@ -15,9 +15,12 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
-from queue import Queue
+from Queue import Queue
 from msg import MSG
 from semaphore_queue import *
+
+def init():
+    pass
 
 class NetIO(object):
     """ NetIO is reponsible for communication with other peers """

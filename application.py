@@ -11,13 +11,17 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 """
 
 from Queue import PriorityQueue
-from scheduler import *
 from enum import *
 from chain import *
-from main import version,help
-from logger import *
+from main import version,help,VERSION
 from manual import *
+
+import logger
 import alerts
+import netio
+import configuration
+import scheduler
+import worker
 
 SERVER_STATUSES = enum(INIT=1, RUNNING=2, QUIT=3)
 TRUE = 1
@@ -29,7 +33,7 @@ class Application(object):
 		super(Application, self).__init__()
 		self.__private_value = 0
 
-		self.logger = Logger()				# Logger
+		self.logger = []					# Logger
 
 		self.alerts = list()				# Customizable alerts for events
 		self.alerts_count = 0				# Count of created alerts
@@ -40,7 +44,7 @@ class Application(object):
 		self.config_file_path = ""			# Configuration file path
 		self.configuration = list() 		# Configuration options container
 
-		self.scheduler = Scheduler() 		# Job scheduler
+		self.scheduler = scheduler.Scheduler() 		# Job scheduler
 		self.scheduled_count = 0			# Scheduled task
 
 		self.workers = list() 				# List of workers
@@ -56,28 +60,31 @@ class Application(object):
 		self.current_status = 1				# Current status of the server
 		self.system_info = list()			# Stores the current system information
 
+		self.networking = []				# networking IO interface
+		self.uci = []						# unified communication interface
+
 	def recv_cmd(self):
 		""" Recive commands from stdin or other sources """
 		cmd = ""
 		cmd = raw_input("--->  ")
 		return cmd
 
-	def initate(self):
+	def init(self):
 		""" This initializes the application specific items """
-
 		# logger start
-		self.logger.log("")
-
+		self.logger = logger.Logger()
+		self.logger.log(" *** Starting the engine *** ")
+		self.logger.log(VERSION)
 		# init configuration
-		self.configuration.append("")
-
-		# init
-
+		self.configuration = configuration.init()
+		# init scheduler
+		self.scheduler = scheduler.init()
+		# init networking
+		self.networking = netio.init()
+		# init worker threads
+		self.threads = worker.init()
 		# init alerts
-		# read from saved state and add to list
-		alerts.init()
-
-		pass
+		self.alerts = alerts.init()
 
 	def mainloop(self):
 		""" Recive a command from stdin CLI and send it out to application engine """
@@ -90,19 +97,26 @@ class Application(object):
 			if (cmd == "quit" or cmd == "exit"):
 				q = 0
 				print "Quiting..."
+				continue
 			if cmd == "help":
 				version()
 				help()
+				continue
 			if cmd == "list":
 				list_help()
+				continue
 			if cmd == "get":
 				get_help()
+				continue
 			if cmd == "get peers":
 				print "getting peers..."
+				continue
 			if cmd == "list peers":
 				print "listing peers..."
+				continue
 			if cmd == "commit":
 				print "commiting changes..."
+				continue
 			if len(cmd) > 0:
 				print "unknown command"
 

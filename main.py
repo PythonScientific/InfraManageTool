@@ -1,4 +1,4 @@
-""" Timetable
+""" Infra Manage Tool
 This project is intended to provide server management engine written in Python
 
 Author: Patryk Zabkiewicz

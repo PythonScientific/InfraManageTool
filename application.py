@@ -101,6 +101,7 @@ class Application(object):
 			if cmd == "help":
 				version()
 				help()
+				help_commands()
 				continue
 			if cmd == "list":
 				list_help()

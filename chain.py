@@ -37,13 +37,16 @@ class Chain(object):
         self.max = 0                  # Maximum number of elements
 
     def lenght():
-        return self.count
+        """ Returns lenght of chain """
+	return self.count
 
     def hasNext(self):
+	""" Returns true if there is next element in chain """
         if self.elem.next:
             return True
 
     def append(self, elem):
+	""" Adds new element to end of chain  """
         # generate new hash
         hashgen = hashlib.sha224(elem.data).hexdigest()
         # put the hash to previous elements
@@ -51,12 +54,14 @@ class Chain(object):
         self.last.next = elem
 
     def remove(self, elem):
+	""" Removes last element from chain  """
         # remove element from back of the chain
         self.last = self.last.prev
         # remove hash from previous element
         self.last.hash = []
 
     def insert(self, elem):
+	""" Inserts new element at right possition into broken chain """
         # insert element into chain proper position based on hash values
         tmpelem = self.last
         while tmpelem.prev:
@@ -66,11 +71,14 @@ class Chain(object):
             tmpelem = tmpelem.prev
 
     def integrity_check(self):
+	""" Checks if the chain is compliant """
         # go throu all of chain elements and check integrity
         tmpelem = self.first
         while tmpelem.next:
             if tmpelem.hash != hashlib.sha224(tmpelem.next.data).hexdigest():
-                pass
+                return False
+            tmpelem = tmpelem.next
+	    return True
 
 if __name__ == "__main__":
     pass

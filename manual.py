@@ -9,6 +9,11 @@ This software comes with NO WARRANTY. You use it at your own risk.
 Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
+def help_commands():
+    print "list\t- list someting"
+    print "get\t- get information"
+    print "connect"
+    print
 
 def list_help():
     print "peers\t- list all your peers"

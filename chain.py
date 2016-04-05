@@ -14,20 +14,17 @@ Full license text is avaible at http://www.gnu.org/licenses/lgpl-3.0.html
 
 """
 
+import hashlib
+import random
+
 class ChainElem(object):
     """ Single chain element """
-    def __init__(self, data):
+    def __init__(self, data=[]):
+        self.id = 0                 # Element identifier
         self.data = data            # Data storage
         self.next = None              # Refrence to the next element in the chain
         self.prev = None              # Refrence to previous element in the chain
-        self.prev3 = None             # Refrence to (n-3) element
-        self.prev5 = None             # Refrence to (n-5) element
-        # Hash values are use for data integrity checks
-        # Hooks are attached to the previous values in Fibonnaci fashion
-        self.prevhash1 = None         # Hash value with previous (n-1) element in the chain
-        self.prevhash3 = None         # Hash value with (n-3) element in the chain
-        self.prevhash5 = None         # Hash value with (n-5) element in the chain
-        self.nexthash = None          # Hash value of next element
+        self.hash = None            # Hash value of next element
 
 class Chain(object):
     """ The chain structure for data (iterable) """
@@ -48,21 +45,32 @@ class Chain(object):
 
     def append(self, elem):
         # generate new hash
+        hashgen = hashlib.sha224(elem.data).hexdigest()
         # put the hash to previous elements
-        pass
+        self.last.hash = hashgen
+        self.last.next = elem
 
     def remove(self, elem):
         # remove element from back of the chain
+        self.last = self.last.prev
         # remove hash from previous element
-        pass
+        self.last.hash = []
 
     def insert(self, elem):
         # insert element into chain proper position based on hash values
-        pass
+        tmpelem = self.last
+        while tmpelem.prev:
+            if tmpelem.hash == hashlib.sha224(elem.data).hexdigest():
+                elem.next = tmpelem.next
+                tmpelem.next = elem
+            tmpelem = tmpelem.prev
 
     def integrity_check(self):
         # go throu all of chain elements and check integrity
-        pass
+        tmpelem = self.first
+        while tmpelem.next:
+            if tmpelem.hash != hashlib.sha224(tmpelem.next.data).hexdigest():
+                pass
 
 if __name__ == "__main__":
     pass
